@@ -22,6 +22,15 @@ resource "aws_vpc" "manaya-terraform-hw1" {
   }
 }
 
+#Create Internet Gateway
+resource "aws_internet_gateway" "manaya-terraform-igw" {
+  vpc_id = aws_vpc.manaya-terraform-hw1.id
+
+  tags = {
+    Name = "manaya Terraform IGW"
+  }
+}
+
 #Create Public Subnets
 resource "aws_subnet" "manaya-terraform-PubSub1" {
   vpc_id = aws_vpc.manaya-terraform-hw1.id
